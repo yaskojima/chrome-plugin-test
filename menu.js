@@ -48,10 +48,10 @@ const createTabForm = function(index, tab, fragment) {
 }
 
 const appendTextInputWithlabel = function(inputId, labelText, parentNode) {
-    const textInput = createTextInput(inputId);
     const textInputLabel = createTextInputLabel(inputId, labelText);
-    parentNode.appendChild(textInput);
+    const textInput = createTextInput(inputId);
     parentNode.appendChild(textInputLabel);
+    parentNode.appendChild(textInput);
 }
 
 const createTextInput = function(inputId) {
