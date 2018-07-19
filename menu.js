@@ -26,15 +26,15 @@ const createTabForm = function(index, tab, fragment) {
     favIcon.setAttribute("id", `favIcon${index}`);
     formElem.appendChild(favIcon);
 
+    const tabNameLabel = document.createElement("label");
+    tabNameLabel.textContent = "タブ名：";
+    tabNameLabel.htmlFor = `tabName${index}`;
+    formElem.appendChild(tabNameLabel);
+
     const tabName = document.createElement("div");
     tabName.textContent = tab.title;
     tabName.setAttribute("id", `tabName${index}`);
     formElem.appendChild(tabName);
-
-    const tabNameLabel = document.createElement("label");
-    tabNameLabel.textContent = "タブ名";
-    tabNameLabel.htmlFor = `tabName${index}`;
-    formElem.appendChild(tabNameLabel);
 
     appendTextInputWithlabel(`transparentRate${index}`, "透過率", formElem);
     appendTextInputWithlabel(`mapAbscissa${index}`, "表示位置（タテ）", formElem);
