@@ -5,7 +5,6 @@ window.onload = function() {
 const addTabFormsToHTML = function() {
     chrome.tabs.query( {active: false, lastFocusedWindow: true}, function (tabs) {
         const fragment = document.createDocumentFragment();
-        const br = document.createElement("br");
         
         for (const [index, tab] of tabs.entries()) {
             createTabForm(index, tab, fragment);
