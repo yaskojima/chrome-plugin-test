@@ -19,29 +19,38 @@ const createTabForm = function(index, tab, fragment) {
     const formElem = document.createElement("form");
     formElem.setAttribute("name", `tab${index}`);
     formElem.setAttribute("id", `formElem${index}`);
+    formElem.setAttribute("style", "width:200px;");
+
+    const tabInfo = document.createElement("div");
+    tabInfo.setAttribute("style", "width:1100px;");
 
     const favIcon = document.createElement("img");
     favIcon.setAttribute("src", tab.favIconUrl);
     favIcon.setAttribute("id", `favIcon${index}`);
-    formElem.appendChild(favIcon);
+    favIcon.setAttribute("width", 16);
+    favIcon.setAttribute("height", 16);
+    tabInfo.appendChild(favIcon);
 
-    const tabNameLabel = document.createElement("label");
-    tabNameLabel.textContent = "タブ名：";
+    const tabNameLabel = document.createElement("span");
+    tabNameLabel.textContent = "：";
     tabNameLabel.htmlFor = `tabName${index}`;
-    formElem.appendChild(tabNameLabel);
+    tabInfo.appendChild(tabNameLabel);
 
-    const tabName = document.createElement("div");
+    const tabName = document.createElement("span");
     tabName.textContent = tab.title;
     tabName.setAttribute("id", `tabName${index}`);
-    formElem.appendChild(tabName);
+    tabName.setAttribute("style", "width:1000px;height:16px;")
+    tabInfo.appendChild(tabName);
 
-    appendTextInputWithlabel(`transparentRate${index}`, "透過率", formElem);
-    appendTextInputWithlabel(`mapAbscissa${index}`, "表示位置（タテ）", formElem);
-    appendTextInputWithlabel(`mapOrdinate${index}`, "表示位置（ヨコ）", formElem);
-    appendTextInputWithlabel(`clippingStartAbscissa${index}`, "スタート x", formElem);
-    appendTextInputWithlabel(`clippingStartOrdinate${index}`, "スタート y", formElem);
-    appendTextInputWithlabel(`clippingEndAbscissa${index}`, "ゴール x", formElem);
-    appendTextInputWithlabel(`clippingEndOrdinate${index}`, "ゴール y", formElem);
+    formElem.appendChild(tabInfo);
+
+    appendTextInputWithlabel(`transparentRate${index}`, "透過率　　　　：", formElem);
+    appendTextInputWithlabel(`mapAbscissa${index}`, "表示位置（縦）：", formElem);
+    appendTextInputWithlabel(`mapOrdinate${index}`, "表示位置（横）：", formElem);
+    appendTextInputWithlabel(`clippingStartAbscissa${index}`, "スタート（縦）：", formElem);
+    appendTextInputWithlabel(`clippingStartOrdinate${index}`, "スタート（横）：", formElem);
+    appendTextInputWithlabel(`clippingEndAbscissa${index}`, "ゴール（縦）　：", formElem);
+    appendTextInputWithlabel(`clippingEndOrdinate${index}`, "ゴール（横）　：", formElem);
 
     fragment.appendChild(formElem);
 }
@@ -49,8 +58,11 @@ const createTabForm = function(index, tab, fragment) {
 const appendTextInputWithlabel = function(inputId, labelText, parentNode) {
     const textInputLabel = createTextInputLabel(inputId, labelText);
     const textInput = createTextInput(inputId);
+    textInput.setAttribute("style", "width:50px;");
+
     parentNode.appendChild(textInputLabel);
     parentNode.appendChild(textInput);
+    parentNode.appendChild(document.createElement("br"));
 }
 
 const createTextInput = function(inputId) {
