@@ -6,6 +6,17 @@
         "default_popup": "tttmenu.html"
     },
     "permissions": [
-        "tabs"
-    ]
+        "tabs",
+        "contextMenus",
+        "tabs",
+        "background",
+        "<all_urls>"
+    ],
+    "icons": {
+        "16": "nihonchizu.png"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    }
 }
